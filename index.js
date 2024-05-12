@@ -36,7 +36,7 @@ app.all('/api/shorturl/:short_url', function(req, res) {
 
 app.post('/api/shorturl', function(req, res) {
   const url = req.body.url
-  const host = url.replace(/^http:\/\//, '')
+  const host = url.replace(/^https?:\/\//, '')
   dns.lookup(host, function(err) {
     if (err) {
       res.json({ error: 'invalid url' })
